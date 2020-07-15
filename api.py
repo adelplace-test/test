@@ -4,8 +4,8 @@ from flask_restful import Resource, Api, reqparse
 from sentence_transformers import SentenceTransformer
 from joblib import load
 
-model = SentenceTransformer("./modele/")
-clf = load("./clf.joblib")
+#model = SentenceTransformer("./modele/")
+#clf = load("./clf.joblib")
 
 app = Flask(__name__)
 api = Api(app)
@@ -20,10 +20,10 @@ class Prediction(Resource):
     def post(self):
         args = self.reqparse.parse_args()
         
-        embedded_input = model.encode(args['input_sentence'])
-        predict = clf.predict(embedded_input)
+        #embedded_input = model.encode(args['input_sentence'])
+        #predict = clf.predict(embedded_input)
         
-        return {'prediction': int(predict[0])}
+        return {'prediction': 7}
 
 api.add_resource(Prediction, '/predict')
 
